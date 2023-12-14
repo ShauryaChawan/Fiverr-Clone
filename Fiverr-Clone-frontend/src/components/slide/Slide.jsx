@@ -1,10 +1,23 @@
-import React from 'react'
-import "./slide.scss"
+import "./slide.scss";
+import Slider from "infinite-react-carousel";
+import PropTypes from "prop-types";
 
-const Slide = () => {
-	return (
-		<div>Slide</div>
-	)
-}
+const Slide = ({ children, slidesToShow, arrowsScroll }) => {
+  return (
+    <div className="slide">
+      <div className="container">
+        <Slider slidesToShow={slidesToShow} arrowsScroll={arrowsScroll}>
+          {children}
+        </Slider>
+      </div>
+    </div>
+  );
+};
 
-export default Slide
+Slide.propTypes = {
+  children: PropTypes.node,
+  slidesToShow: PropTypes.number,
+  arrowsScroll: PropTypes.number,
+};
+
+export default Slide;
