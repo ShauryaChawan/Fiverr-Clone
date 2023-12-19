@@ -1,13 +1,19 @@
 import React from "react";
 import "./gig.scss";
-import { Slider } from "infinite-react-carousel";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
-function Gig() {
+const Gig = () => {
   return (
     <div className="gig">
       <div className="container">
         <div className="left">
-          <span className="breadcrumbs">Liverr &gt; Graphics & Design &gt;</span>
+          <span className="breadcrumbs">
+            Liverr &gt; Graphics & Design &gt;
+          </span>
           <h1>I will create ai generated art for you</h1>
           <div className="user">
             <img
@@ -25,29 +31,50 @@ function Gig() {
               <span>5</span>
             </div>
           </div>
-          <Slider slidesToShow={1} arrowsScroll={1} className="slider">
-            <img
-              src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <img
-              src="https://images.pexels.com/photos/1462935/pexels-photo-1462935.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <img
-              src="https://images.pexels.com/photos/1054777/pexels-photo-1054777.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-          </Slider>
+          <Swiper
+            spaceBetween={30}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={true}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="slider"
+            slidesToShow={1}
+            arrowsScroll={1}
+          >
+            <SwiperSlide>
+              <img
+                src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                src="https://images.pexels.com/photos/1462935/pexels-photo-1462935.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                src="https://images.pexels.com/photos/1054777/pexels-photo-1054777.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+            </SwiperSlide>
+          </Swiper>
           <h2>About This Gig</h2>
           <p>
             I use an AI program to create images based on text prompts. This
             means I can help you to create a vision you have through a textual
             description of your scene without requiring any reference images.
-            Some things I&apos;ve found it often excels at are: Character portraits
-            (E.g. a picture to go with your DnD character) Landscapes (E.g.
-            wallpapers, illustrations to compliment a story) Logos (E.g. Esports
-            team, business, profile picture) You can be as vague or as
+            Some things I&apos;ve found it often excels at are: Character
+            portraits (E.g. a picture to go with your DnD character) Landscapes
+            (E.g. wallpapers, illustrations to compliment a story) Logos (E.g.
+            Esports team, business, profile picture) You can be as vague or as
             descriptive as you want. Being more vague will allow the AI to be
             more creative which can sometimes result in some amazing images. You
             can also be incredibly precise if you have a clear image of what you
@@ -220,11 +247,11 @@ function Gig() {
                 <span>5</span>
               </div>
               <p>
-                Amazing work! Communication was
-                amazing, each and every day he sent me images that I was free to
-                request changes to. They listened, understood, and delivered
-                above and beyond my expectations. I absolutely recommend this
-                gig, and know already that Ill be using it again very very soon
+                Amazing work! Communication was amazing, each and every day he
+                sent me images that I was free to request changes to. They
+                listened, understood, and delivered above and beyond my
+                expectations. I absolutely recommend this gig, and know already
+                that Ill be using it again very very soon
               </p>
               <div className="helpful">
                 <span>Helpful?</span>
@@ -278,6 +305,6 @@ function Gig() {
       </div>
     </div>
   );
-}
+};
 
 export default Gig;
