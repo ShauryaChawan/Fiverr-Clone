@@ -7,12 +7,12 @@ const Add = () => {
         <h1>Add New Gig</h1>
         <div className="sections">
           <div className="info">
-            <label htmlFor="">Title</label>
+            <label htmlFor="">Title *</label>
             <input
               type="text"
               placeholder="e.g. I will do something I'm really good at"
             />
-            <label htmlFor="">Category</label>
+            <label htmlFor="">Category *</label>
             <select name="cats" id="cats">
               <option value="graphics_and_design">Graphics & Design</option>
               <option value="digital_marketing">Digital Marketing</option>
@@ -30,9 +30,9 @@ const Add = () => {
               <option value="data">Data</option>
               <option value="handmade">Handmade</option>
             </select>
-            <label htmlFor="">Cover Image</label>
+            <label htmlFor="">Cover Image *</label>
             <input type="file" />
-            <label htmlFor="">Upload Images</label>
+            <label htmlFor="">Upload Images *</label>
             <input type="file" multiple />
             <label htmlFor="">Description</label>
             <textarea

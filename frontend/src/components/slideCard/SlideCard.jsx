@@ -12,7 +12,7 @@ import "swiper/css/navigation";
 
 const SlideCard = () => {
   return (
-    <Link to="/gigs?cat=design">
+    <Link to="/gigs">
       <div className="slide-card">
         <Swiper
           modules={[Autoplay, Navigation]}

@@ -1,7 +1,9 @@
-import React, { useRef, useState } from "react";
-import "./gigs.scss";
-import { gigs } from "../../data";
+import React, { useEffect, useRef, useState } from "react";
+import "./Gigs.scss";
 import GigCard from "../../components/gigCard/GigCard";
+import { useQuery } from "@tanstack/react-query";
+import newRequest from "../../utils/newRequest";
+import { useLocation } from "react-router-dom";
 
 function Gigs() {
   const [sort, setSort] = useState("sales");
@@ -9,15 +11,54 @@ function Gigs() {
   const minRef = useRef();
   const maxRef = useRef();
 
+  const { search } = useLocation();
+
+  const { isLoading, error, data, refetch } = useQuery({
+    queryKey: ["gigs"],
+    queryFn: () => {
+      let apiUrl = "/gigs";
+      const queryParams = `?min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`;
+
+      // Check if search parameter is present
+      if (search) {
+        apiUrl += search + queryParams;
+      } else {
+        apiUrl += queryParams;
+      }
+
+      return newRequest.get(apiUrl).then((res) => res.data);
+    },
+  });
+
+  console.log(data);
+
   const reSort = (type) => {
     setSort(type);
     setOpen(false);
   };
 
-  const apply = ()=>{
-    console.log(minRef.current.value)
-    console.log(maxRef.current.value)
-  }
+  /*
+  For the following code i was geeting following warning
+  
+  React Hook useEffect has a missing dependency: 'refetch'. 
+  Either include it or remove the dependency array. eslint(react-hooks/exhaustive-deps)
+  */
+  // useEffect(() => {
+  //   refetch();
+  // }, [sort]);
+
+  // so the modified code is
+  useEffect(() => {
+    const fetchData = async () => {
+      await refetch();
+    };
+
+    fetchData();
+  }, [sort, refetch]);
+
+  const apply = () => {
+    refetch();
+  };
 
   return (
     <div className="gigs">
@@ -25,7 +66,8 @@ function Gigs() {
         <span className="breadcrumbs">Liverr &gt; Graphics & Design &gt;</span>
         <h1>AI Artists</h1>
         <p>
-          Explore the boundaries of art and technology with Liverr&apos;s AI artists
+          Explore the boundaries of art and technology with Liverr&apos;s AI
+          artists
         </p>
         <div className="menu">
           <div className="left">
@@ -46,16 +88,18 @@ function Gigs() {
                   <span onClick={() => reSort("createdAt")}>Newest</span>
                 ) : (
                   <span onClick={() => reSort("sales")}>Best Selling</span>
-                  )}
-                  <span onClick={() => reSort("sales")}>Popular</span>
+                )}
+                <span onClick={() => reSort("sales")}>Popular</span>
               </div>
             )}
           </div>
         </div>
         <div className="cards">
-          {gigs.map((gig) => (
-            <GigCard key={gig.id} item={gig} />
-          ))}
+          {isLoading
+            ? "loading"
+            : error
+            ? "Something went wrong!"
+            : data.map((gig) => <GigCard key={gig._id} item={gig} />)}
         </div>
       </div>
     </div>
