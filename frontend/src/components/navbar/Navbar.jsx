@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 import "./Navbar.scss";
@@ -44,10 +44,22 @@ function Navbar() {
           <span className="dot">.</span>
         </div>
         <div className="links">
-          <span>Fiverr Business</span>
-          <span>Explore</span>
-          <span>English</span>
-          {!currentUser?.isSeller && <span>Become a Seller</span>}
+          {/* <div className="dropdown">
+            <span>Explore</span>
+            <div className="items">
+              <div className="item">Grpahics & Design</div>
+              <div className="item">Digital Marketing</div>
+              <div className="item">Writing & Translation</div>
+              <div className="item">Video & Animations</div>
+              <div className="item">Music & Audio</div>
+              <div className="item">Programming & Tech</div>
+              <div className="item">Business</div>
+              <div className="item">Lifestyle</div>
+              <div className="item">Data</div>
+              <div className="item">Photography</div>
+              <div className="item">Artists</div>
+            </div>
+          </div> */}
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
               <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
@@ -92,32 +104,53 @@ function Navbar() {
         <>
           <hr />
           <div className="menu">
-            <Link className="link menuLink" to="/">
+            <Link
+              className="link menuLink"
+              to="/gigs?category=graphics_and_design"
+            >
               Graphics & Design
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link
+              className="link menuLink"
+              to="/gigs?category=video_and_animation"
+            >
               Video & Animation
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link
+              className="link menuLink"
+              to="/gigs?category=writing_and_transalation"
+            >
               Writing & Translation
             </Link>
-            <Link className="link menuLink" to="/">
-              AI Services
+            <Link className="link menuLink" to="/gigs?category=data">
+              Data
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link
+              className="link menuLink"
+              to="/gigs?category=digital_marketing"
+            >
               Digital Marketing
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?category=music_and_audio">
               Music & Audio
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link
+              className="link menuLink"
+              to="/gigs?category=programming_and_tech"
+            >
               Programming & Tech
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?category=business">
               Business
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?category=lifestyle">
               Lifestyle
+            </Link>
+            <Link className="link menuLink" to="/gigs?category=photography">
+              Photography
+            </Link>
+            <Link className="link menuLink" to="/gigs?category=artists">
+              Artist
             </Link>
           </div>
           <hr />

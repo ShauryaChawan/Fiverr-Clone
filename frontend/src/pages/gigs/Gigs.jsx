@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 function Gigs() {
   const [sort, setSort] = useState("sales");
   const [open, setOpen] = useState(false);
+  const [category, setCategory] = useState("");
   const minRef = useRef();
   const maxRef = useRef();
 
@@ -17,7 +18,7 @@ function Gigs() {
     queryKey: ["gigs"],
     queryFn: () => {
       let apiUrl = "/gigs";
-      const queryParams = `?min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`;
+      const queryParams = `?&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`;
 
       // Check if search parameter is present
       if (search) {

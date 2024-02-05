@@ -1,5 +1,6 @@
 .featured {
-  height: 600px;
+  // height: 630px;
+  height: 90vh;
   display: flex;
   justify-content: center;
   background-color: #013914;
@@ -44,6 +45,8 @@
 
           input {
             border: none;
+            width: 550px;
+            height: 40px;
             outline: none;
 
             &::placeholder {

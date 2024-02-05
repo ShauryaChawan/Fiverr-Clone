@@ -12,11 +12,7 @@
     width: 95%;
     margin: 0;
     padding: 10px;
-    // border: 1px solid black;
     position: relative;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
 
     .swiper-slide {
       width: 300px;
@@ -65,11 +61,10 @@
     .swiper-button-prev,
     .swiper-button-next {
       background-color: white;
+      border: 20px solid white;
       border-radius: 50%;
-      width: 45px;
       padding: 10px;
-      font-size: 20px;
-      transform: scale(0.7);
+      transform: scale(0.65);
       font-weight: bold;
       color: #98dda0;
       position: absolute;

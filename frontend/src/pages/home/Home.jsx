@@ -54,7 +54,7 @@ function Home() {
       </div>
       <div className="explore">
         <div className="container">
-          <h1>Explore the marketplace</h1>
+          <h1 id="#h1">Explore the marketplace</h1>
           <div className="items">
             <div className="item">
               <img
@@ -136,6 +136,14 @@ function Home() {
               />
               <div className="line"></div>
               <span>Photography</span>
+            </div>
+            <div className="item">
+              <img
+                src="../../../public/img/artists.png"
+                alt=""
+              />
+              <div className="line"></div>
+              <span>Artists</span>
             </div>
           </div>
         </div>

@@ -11,7 +11,6 @@
   .swiper {
     width: 90%;
     margin: 0;
-    // border: 1px solid black;
     position: relative;
 
     .swiper-slide {
@@ -21,7 +20,6 @@
       border-radius: 5px;
       position: relative;
       cursor: pointer;
-      /* Center slide text vertically */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -31,7 +29,7 @@
         height: 100%;
         object-fit: cover;
       }
-    
+
       .desc {
         font-weight: 300;
         position: absolute;
@@ -39,12 +37,12 @@
         left: 15px;
         z-index: 10;
       }
-    
+
       .title {
         position: absolute;
         top: 40px;
         left: 15px;
-        font-size:24px;
+        font-size: 24px;
         font-weight: 500;
       }
     }
@@ -52,11 +50,10 @@
     .swiper-button-prev,
     .swiper-button-next {
       background-color: white;
+      border: 20px solid white;
       border-radius: 50%;
-      width: 45px;
       padding: 10px;
-      font-size: 20px;
-      transform: scale(0.7);
+      transform: scale(0.65);
       font-weight: bold;
       color: #98dda0;
       position: absolute;
@@ -64,12 +61,6 @@
       -webkit-box-shadow: 0px 0px 12px -3px rgba(0, 0, 0, 0.75);
       -moz-box-shadow: 0px 0px 12px -3px rgba(0, 0, 0, 0.75);
       box-shadow: 0px 0px 12px -3px rgba(0, 0, 0, 0.75);
-    }
-
-    .swiper-button-prev {
-      position: absolute;
-      left: -5 !important;
-      /* top:0; */
     }
   }
 }
