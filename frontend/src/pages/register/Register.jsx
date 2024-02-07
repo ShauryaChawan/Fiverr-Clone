@@ -3,11 +3,13 @@ import upload from "../../utils/upload";
 import "./Register.scss";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 function Register() {
   const [file, setFile] = useState(null);
   const [user, setUser] = useState({
     username: "",
+    fullName: "",
     email: "",
     password: "",
     img: "",
@@ -48,30 +50,36 @@ function Register() {
       <form onSubmit={handleSubmit}>
         <div className="left">
           <h1>Create a new account</h1>
-          <label htmlFor="">Username</label>
+          <label htmlFor="">Username*</label>
           <input
             name="username"
             type="text"
-            placeholder="johndoe"
+            placeholder="john_doe_12"
             onChange={handleChange}
+            required
           />
-          <label htmlFor="">Email</label>
+          <label htmlFor="">Full Name*</label>
+          <input
+            name="username"
+            type="text"
+            placeholder="John Doe"
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="">Email*</label>
           <input
             name="email"
             type="email"
-            placeholder="email"
+            placeholder="email@example.xyz"
             onChange={handleChange}
+            required
           />
-          <label htmlFor="">Password</label>
-          <input name="password" type="password" onChange={handleChange} />
-          <label htmlFor="">Profile Picture</label>
-          <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-          <label htmlFor="">Country</label>
+          <label htmlFor="">Password*</label>
           <input
-            name="country"
-            type="text"
-            placeholder="Usa"
+            name="password"
+            type="password"
             onChange={handleChange}
+            required
           />
           <button type="submit">Register</button>
         </div>
@@ -84,12 +92,33 @@ function Register() {
               <span className="slider round"></span>
             </label>
           </div>
-          <label htmlFor="">Phone Number</label>
+          <label htmlFor="">Phone Number*</label>
           <input
             name="phone"
             type="text"
-            placeholder="+1 234 567 89"
+            placeholder="+91 12345 67890"
             onChange={handleChange}
+            required
+          />
+          <label htmlFor="">Profile Picture*</label>
+          <div id="custom-file-upload">
+            <span id="upload_button">
+              <CloudUploadIcon /> Custom Upload
+            </span>
+            <input
+              id="file"
+              type="file"
+              onChange={(e) => setFile(e.target.files[0])}
+              required
+            />
+          </div>
+          <label htmlFor="">Country*</label>
+          <input
+            name="country"
+            type="text"
+            placeholder="India"
+            onChange={handleChange}
+            required
           />
           <label htmlFor="">Description</label>
           <textarea

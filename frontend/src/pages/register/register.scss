@@ -34,6 +34,42 @@
         border: 1px solid rgb(216, 214, 214);
       }
 
+      #custom-file-upload {
+        height: 50px;
+        border: 1px solid #ccc;
+        position: relative;
+        
+        #upload_button{
+          position: absolute;
+          width: fit-content;
+          padding-left: 10px;
+          font-size: small;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          gap: 10px;
+          z-index: -1;
+        }
+
+        #file {
+          width: 100%;
+          border: none;
+          outline: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &::file-selector-button{
+            background-color: transparent;
+            color: transparent;
+            border: none;
+            outline: none;
+            width: 200px;
+          }
+        }
+      }
+
       button {
         border: none;
         padding: 20px;
