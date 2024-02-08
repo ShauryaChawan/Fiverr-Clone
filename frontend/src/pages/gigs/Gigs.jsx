@@ -64,11 +64,11 @@ function Gigs() {
   return (
     <div className="gigs">
       <div className="container">
-        <span className="breadcrumbs">Liverr &gt; Graphics & Design &gt;</span>
-        <h1>AI Artists</h1>
+        <span className="breadcrumbs">Fiverr &gt; All Categories &gt;</span>
+        <h1>All Categories</h1>
         <p>
-          Explore the boundaries of art and technology with Liverr&apos;s AI
-          artists
+          Explore the boundaries of art and technology with Liverr&apos;s All
+          Categories
         </p>
         <div className="menu">
           <div className="left">

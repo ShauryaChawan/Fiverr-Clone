@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
+import "./success.scss"
 
 const Success = () => {
   const { search } = useLocation();
@@ -14,7 +15,7 @@ const Success = () => {
         await newRequest.put("/orders", { payment_intent });
         setTimeout(() => {
           navigate("/orders");
-        }, 5000);
+        }, 10000);
       } catch (err) {
         console.log(err);
       }
@@ -24,9 +25,13 @@ const Success = () => {
   }, []);
 
   return (
-    <div>
-      Payment successful. You are being redirected to the orders page. Please do
-      not close the page
+    <div className="succeess_div">
+      <video autoPlay muted src="./img/payment_success.mp4" />
+      <p>
+        Payment Successful. <br />
+        You are being redirected to the orders page. <br />
+        Please do not close the page
+      </p>
     </div>
   );
 };

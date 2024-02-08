@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import newRequest from "../../utils/newRequest";
 import Review from "../review/Review";
 import "./Reviews.scss";
@@ -21,14 +21,21 @@ const Reviews = ({ gigId }) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["reviews"]);
+      setInputValue(""); // Clear the input field
     },
   });
 
+  const [inputValue, setInputValue] = useState(""); // State to hold the input value
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const desc = e.target[0].value;
+    // e.preventDefault();
+    const desc = inputValue;
     const star = e.target[1].value;
     mutation.mutate({ gigId, desc, star });
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value); // Update the input value
   };
 
   return (
@@ -42,7 +49,12 @@ const Reviews = ({ gigId }) => {
       <div className="add">
         <h3>Add a review</h3>
         <form action="" className="addForm" onSubmit={handleSubmit}>
-          <input type="text" placeholder="write your opinion" />
+          <input
+            type="text"
+            placeholder="write your opinion"
+            value={inputValue}
+            onChange={handleInputChange}
+          />
           <select name="" id="">
             <option value={1}>1</option>
             <option value={2}>2</option>

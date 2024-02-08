@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./gig.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link, useParams } from "react-router-dom";
@@ -134,7 +134,13 @@ const Gig = () => {
                         </span>
                       </div>
                     )}
-                    <div className="button">Contact Me</div>
+                    <button>Contact Me</button>
+                    {/* <button
+                      className="button"
+                      onClick={() => setShowContactModal(true)}
+                    >
+                      Contact Me
+                    </button> */}
                   </div>
                 </div>
                 <div className="box">
