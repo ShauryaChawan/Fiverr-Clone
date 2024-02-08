@@ -134,7 +134,7 @@ const Gig = () => {
                         </span>
                       </div>
                     )}
-                    <button>Contact Me</button>
+                    <div className="button">Contact Me</div>
                   </div>
                 </div>
                 <div className="box">

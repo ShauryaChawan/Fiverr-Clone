@@ -14,3 +14,5 @@
   - Add a User's profile updation page, where the user can delete its profile.
 - Payment Success 
   - Success Style Payment Success Page
+- Contact Me
+  - Add a Contact Seller page.
