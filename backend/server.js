@@ -43,7 +43,7 @@ app.use((err, req, res, next) => {
   return res.status(errorStatus).send(errorMessage);
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(8800, () => {
   connect();
-  console.log(`Backend server is running on ${process.env.PORT}`);
+  console.log("Backend server is running on 8800");
 });

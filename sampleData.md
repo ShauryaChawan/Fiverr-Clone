@@ -1,8 +1,10 @@
 # Website Data and info
 
 ## Working Categories
-- programming and Tech
+- Programming and Tech
 - Artists
+
+<hr/>
 
 ## Demo Users in each category
 
@@ -16,9 +18,21 @@
   - Omkar - Best from Waste
 
 - Buyers
-  - Gitanjali
-  - Atharva
+  - Gitanjali Parmar - gitanjali01 - gitanjali123 - gitanjali123@gmail.com
+  - Atharva Poredi - atharva01 - atharva123 - atharva123@gmail.com
 
+<hr/>
+
+## Demo Payment details
+
+- Card Number: 4000003560000008
+- CVC: 321 (random)
+- Expiration: 02/28 (random)
+- Country: India (compulsory)
+
+For more info check this site: https://stripe.com/docs/testing
+
+<hr/>
 
 # Detailed Info of Users
 
@@ -52,7 +66,7 @@
       - features - 
         - Responsive
         - Provide Source Code
-        - Maintainance for 6 months
+        - Maintenance  for 6 months
         - SEO Management
         - Deployment of Website
       - Sales - 100
@@ -71,7 +85,7 @@
       - deliveryTime - 30 days
       - revisionNumber - 10
       - features - 
-        - Maintainance
+        - Maintenance
         - Clean Code
         - Provide Source Code 
       - Sales - 50
@@ -108,7 +122,7 @@
         
         - Provide Source Code
         
-        - Maintainance for 6 months
+        - Maintenance for 6 months
         
         - SEO Management
         
@@ -116,13 +130,11 @@
       
         - Clean Code
       
-        - Provide Source Code 
-      
       - Sales - 20
 
 
 - Shraddha
-  - shraddha01
+  - shraddha21
   - Shraddha Dabade
   - shraddha123@gmail.com
   - shraddha123
@@ -164,15 +176,13 @@
         
         - Provide Source Code
         
-        - Maintainance for 6 months
+        - Maintenance for 6 months
         
         - SEO Management
         
         - Deployment of Website
       
         - Clean Code
-      
-        - Provide Source Code 
       
       - Sales - 20
     
@@ -196,7 +206,7 @@
       
       - shortTitle - Front End Web Development
       
-      - shortDescription - Cool Amazing Static Websites
+      - shortDescription - Cool amazing landing pages for your Business
       
       - deliveryTime - 3 days
       
@@ -208,7 +218,7 @@
       
         - Provide Source Code
       
-        - Maintainance for 6 months
+        - Maintenance for 6 months
       
         - SEO Management
       
@@ -251,7 +261,7 @@
       
       - shortTitle - Pyhton Stack Web Development 
       
-      - shortDescription - Can Build a Full functional website for a complex business logic
+      - shortDescription - Can Build a fully functional website for a complex business logic
       
       - deliveryTime - 30 days
       
@@ -260,17 +270,13 @@
       - features - 
         - Responsive
         
-        - Provide Source Code
-        
-        - Maintainance for 6 months
+        - Maintenance for 6 months
         
         - SEO Management
         
         - Deployment of Website
       
         - Clean Code
-      
-        - Provide Source Code 
       
       - Sales - 10
 
@@ -332,9 +338,9 @@
   - Country = India
   - Description = "Hello, I'm a passionate pottery maker weaving clay into stories of form and function. With hands immersed in the ancient art of pottery, I mold raw earth into vessels that breathe life into everyday moments. Drawing inspiration from nature's asymmetry, each piece I create is a unique blend of artistic expression and functional design. Through the rhythmic dance between my hands and the wheel, I aim to craft tangible narratives that resonate with the essence of simplicity and authenticity. As a devoted artisan, I find fulfillment in shaping clay into vessels that not only serve a purpose but also evoke a sense of connection and beauty in the hands that hold them."
 
-  - Gig 1 - Pottry
+  - Gig 1 - Pottery
     
-    - title - Pottry
+    - title - Pottery
     
     - description - "
       Hello, I'm a passionate pottery maker weaving clay into stories of form and function. With hands immersed in the ancient art of pottery, I mold raw earth into vessels that breathe life into everyday moments. Drawing inspiration from nature's asymmetry, each piece I create is a unique blend of artistic expression and functional design. Through the rhythmic dance between my hands and the wheel, I aim to craft tangible narratives that resonate with the essence of simplicity and authenticity. As a devoted artisan, I find fulfillment in shaping clay into vessels that not only serve a purpose but also evoke a sense of connection and beauty in the hands that hold them."

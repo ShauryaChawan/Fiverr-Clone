@@ -1,19 +1,94 @@
-import "./add.scss";
+import React, { useReducer, useState } from "react";
+import "./Add.scss";
+import { gigReducer, INITIAL_STATE } from "../../reducer/gigReducer";
+import upload from "../../utils/upload";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import newRequest from "../../utils/newRequest";
+import { useNavigate } from "react-router-dom";
 
 const Add = () => {
+  const [singleFile, setSingleFile] = useState(undefined);
+  const [files, setFiles] = useState([]);
+  const [uploading, setUploading] = useState(false);
+
+  const [state, dispatch] = useReducer(gigReducer, INITIAL_STATE);
+
+  const handleChange = (e) => {
+    dispatch({
+      type: "CHANGE_INPUT",
+      payload: { name: e.target.name, value: e.target.value },
+    });
+  };
+  const handleFeature = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: "ADD_FEATURE",
+      payload: e.target[0].value,
+    });
+    e.target[0].value = "";
+  };
+
+  const handleUpload = async () => {
+    setUploading(true);
+    try {
+      const cover = await upload(singleFile);
+
+      const images = await Promise.all(
+        [...files].map(async (file) => {
+          const url = await upload(file);
+          return url;
+        })
+      );
+      setUploading(false);
+      dispatch({ type: "ADD_IMAGES", payload: { cover, images } });
+      window.alert("🥳 Images uploaded successfully 🥳");
+    } catch (err) {
+      console.log(err);
+      window.alert("⚠️Something Went Wrong ⚠️");
+    }
+  };
+
+  const navigate = useNavigate();
+
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (gig) => {
+      return newRequest.post("/gigs", gig);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["myGigs"]);
+    },
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    try {
+      mutation.mutate(state);
+      window.alert("🥳 Gig Created Successfully 🥳");
+      navigate("/mygigs");
+    } catch (err) {
+      window.alert("⚠️ Something Went Wrong. Gig was not created ⚠️");
+      console.log(err);
+    }
+  };
+
   return (
     <div className="add">
       <div className="container">
         <h1>Add New Gig</h1>
         <div className="sections">
           <div className="info">
-            <label htmlFor="">Title *</label>
+            <label htmlFor="">Title*</label>
             <input
               type="text"
+              name="title"
               placeholder="e.g. I will do something I'm really good at"
+              onChange={handleChange}
+              required
             />
-            <label htmlFor="">Category *</label>
-            <select name="cats" id="cats">
+            <label htmlFor="">Category*</label>
+            <select name="category" id="category" onChange={handleChange}>
               <option value="graphics_and_design">Graphics & Design</option>
               <option value="digital_marketing">Digital Marketing</option>
               <option value="writing_and_transalation">
@@ -28,44 +103,100 @@ const Add = () => {
               <option value="business">Business</option>
               <option value="lifestyle">Lifestyle</option>
               <option value="data">Data</option>
-              <option value="handmade">Handmade</option>
+              <option value="artist">Artist</option>
             </select>
-            <label htmlFor="">Cover Image *</label>
-            <input type="file" />
-            <label htmlFor="">Upload Images *</label>
-            <input type="file" multiple />
-            <label htmlFor="">Description</label>
+            <div className="images">
+              <div className="imagesInputs">
+                <label htmlFor="">Cover Image*</label>
+                <input
+                  type="file"
+                  onChange={(e) => setSingleFile(e.target.files[0])}
+                  required
+                />
+                <label htmlFor="">Upload Images*</label>
+                <input
+                  type="file"
+                  multiple
+                  onChange={(e) => setFiles(e.target.files)}
+                  required
+                />
+              </div>
+              <button onClick={handleUpload}>
+                {uploading ? "uploading" : "Upload"}
+              </button>
+            </div>
+            <label htmlFor="">Description*</label>
             <textarea
-              name=""
+              name="desc"
               id=""
               placeholder="Brief descriptions to introduce your service to customers"
               cols="0"
               rows="16"
+              onChange={handleChange}
+              required
             ></textarea>
-            <button>Create</button>
+            <button onClick={handleSubmit}>Create</button>
           </div>
           <div className="details">
-            <label htmlFor="">Service Title</label>
-            <input type="text" placeholder="e.g. One-page web design" />
-            <label htmlFor="">Short Description</label>
+            <label htmlFor="">Service Title*</label>
+            <input
+              type="text"
+              name="shortTitle"
+              placeholder="e.g. One-page web design"
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="">Short Description*</label>
             <textarea
-              name=""
+              name="shortDesc"
+              onChange={handleChange}
               id=""
               placeholder="Short description of your service"
               cols="30"
               rows="10"
+              required
             ></textarea>
-            <label htmlFor="">Delivery Time (e.g. 3 days)</label>
-            <input type="number" />
-            <label htmlFor="">Revision Number</label>
-            <input type="number" />
-            <label htmlFor="">Add Features</label>
-            <input type="text" placeholder="e.g. page design" />
-            <input type="text" placeholder="e.g. file uploading" />
-            <input type="text" placeholder="e.g. setting up a domain" />
-            <input type="text" placeholder="e.g. hosting" />
-            <label htmlFor="">Price</label>
-            <input type="number" />
+            <label htmlFor="">Delivery Time* (in days)</label>
+            <input
+              type="number"
+              name="deliveryTime"
+              placeholder="(e.g. 3 days)"
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="">Revision Number*</label>
+            <input
+              type="number"
+              name="revisionNumber"
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="">Add Features*</label>
+            <form action="" className="add" onSubmit={handleFeature}>
+              <input type="text" placeholder="e.g. page design" />
+              <button type="submit">add</button>
+            </form>
+            <div className="addedFeatures">
+              {state?.features?.map((f) => (
+                <div className="item" key={f}>
+                  <button
+                    onClick={() =>
+                      dispatch({ type: "REMOVE_FEATURE", payload: f })
+                    }
+                  >
+                    {f}
+                    <span>X</span>
+                  </button>
+                </div>
+              ))}
+            </div>
+            <label htmlFor="">Price*</label>
+            <input
+              type="number"
+              onChange={handleChange}
+              name="price"
+              required
+            />
           </div>
         </div>
       </div>

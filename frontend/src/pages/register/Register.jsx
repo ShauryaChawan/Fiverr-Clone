@@ -40,8 +40,10 @@ function Register() {
         ...user,
         img: url,
       });
-      navigate("/");
+      window.alert("🥳 User Created Successfully 🥳");
+      navigate("/login");
     } catch (err) {
+      window.alert("⚠️ Somthing Went Wrong ⚠️");
       console.log(err);
     }
   };
@@ -60,7 +62,7 @@ function Register() {
           />
           <label htmlFor="">Full Name*</label>
           <input
-            name="username"
+            name="fullName"
             type="text"
             placeholder="John Doe"
             onChange={handleChange}
@@ -96,7 +98,7 @@ function Register() {
           <input
             name="phone"
             type="text"
-            placeholder="+91 12345 67890"
+            placeholder="eg. +91 12345 67890"
             onChange={handleChange}
             required
           />
@@ -116,7 +118,7 @@ function Register() {
           <input
             name="country"
             type="text"
-            placeholder="India"
+            placeholder="eg. India"
             onChange={handleChange}
             required
           />

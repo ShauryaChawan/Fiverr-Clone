@@ -27,7 +27,7 @@ const GigCard = ({ item }) => {
               <span>{data.username}</span>
             </div>
           )}
-          <p>{item.desc}</p>
+          <p>{item.shortDesc}</p>
           <div className="star">
             <img src="./img/star.png" alt="" />
             <span>
@@ -41,7 +41,7 @@ const GigCard = ({ item }) => {
           <img src="./img/heart.png" alt="" />
           <div className="price">
             <span>STARTING AT</span>
-            <h2>$ {item.price}</h2>
+            <h2> &#x20b9; {item.price}</h2>
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@ GigCard.propTypes = {
     _id: PropTypes.string,
     userId: PropTypes.string,
     cover: PropTypes.string,
-    desc: PropTypes.string,
+    shortDesc: PropTypes.string,
     price: PropTypes.number,
     totalStars: PropTypes.number,
     starNumber: PropTypes.number,
