@@ -16,3 +16,5 @@
   - Success Style Payment Success Page
 - Contact Me
   - Add a Contact Seller page.
+- Buttons:
+  - Single Gig "Continue" button, there is a blue underline
