@@ -107,7 +107,9 @@ const Gig = () => {
                 </SwiperSlide>
               ))}
             </Swiper>
-            <h2>About This Gig</h2>
+            <h2>
+              <b>About This Gig</b>
+            </h2>
             <p>{data.desc}</p>
             {isLoadingUser ? (
               "loading"
