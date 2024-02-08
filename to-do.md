@@ -7,3 +7,4 @@
 - in Message, Extract Name of seller for Buyer to chat, and for Seller, extract the name of Buyer
 - There is an issue with messageing. Have to recheck the code.
 - Add a User's profile updation page, where the user can delete its profile.
+- Style Payment Success Page
